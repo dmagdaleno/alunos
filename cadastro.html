@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/cadastro.js"></script>
+    <title>Alunos</title>
+</head>
+
+<body>
+    <h1>Cadastro de Aluno</h1>
+    <form action="cadastro">
+        <fieldset>
+            <legend>Dados pessoais</legend>
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome">
+            <br>
+            <label for="email">E-mail</label>
+            <input type="text" id="email" name="email">
+            <br>
+            <label for="idade">Idade</label>
+            <input type="number" id="idade" name="idade">
+            <br>
+            <label for="sexo">Sexo</label>
+            <select name="sexo" id="sexo">
+                <option value="m">Masculino</option>
+                <option value="f">Feminino</option>
+                <option value="o">Outro</option>
+            </select>
+            <br>
+            <input type="file" id="foto" name="foto">
+        </fieldset>
+        <fieldset>
+            <legend>Cursos</legend>
+            <input type="checkbox" id="curso-logica" name="curso-logica">
+            <label for="curso-logica">Lógica de programação</label>
+            <br>
+            <input type="checkbox" id="curso-html" name="curso-html">
+            <label for="curso-html">HTML e CSS</label>
+            <br>
+            <input type="checkbox" id="curso-js" name="curso-js">
+            <label for="curso-js">JavaScript</label>
+            <br>
+        </fieldset>
+        <button type="button" id="btn-salvar" onclick="salvar()">Salvar</button>
+    </form>
+</body>
+
+</html>
