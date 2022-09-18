@@ -1,4 +1,8 @@
-var alunos = []
+let alunos = JSON.parse(localStorage.getItem('alunos'))
+
+if(alunos == null) {
+    alunos = []
+}
 
 function salvar() {
     let nome = document.getElementById('nome').value
@@ -22,4 +26,6 @@ function salvar() {
     }
 
     alunos.push(aluno)
+
+    localStorage.setItem('alunos', JSON.stringify(alunos))
 }
