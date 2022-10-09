@@ -1,7 +1,17 @@
 let alunos = JSON.parse(localStorage.getItem('alunos'))
-
 if(alunos == null) {
     alunos = []
+}
+
+const indice = location.search.split('=')[1]
+if(indice !== undefined) {
+    preencheFormulario(indice)
+}
+
+function preencheFormulario(indice) {
+    let aluno = alunos[indice]
+    document.getElementById('nome').value = aluno.nome
+    document.getElementById('email').value = aluno.email
 }
 
 function salvar() {
