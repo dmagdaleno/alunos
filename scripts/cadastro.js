@@ -4,7 +4,8 @@ if(alunos == null) {
 }
 
 const indice = location.search.split('=')[1]
-if(indice !== undefined) {
+const formEdicao = indice !== undefined 
+if(formEdicao) {
     preencheFormulario(indice)
 }
 
@@ -12,6 +13,11 @@ function preencheFormulario(indice) {
     let aluno = alunos[indice]
     document.getElementById('nome').value = aluno.nome
     document.getElementById('email').value = aluno.email
+    document.getElementById('idade').value = aluno.idade
+    document.getElementById('sexo').value = aluno.sexo
+    document.getElementById('curso-logica').checked = aluno.cursoLogica
+    document.getElementById('curso-html').checked = aluno.cursoHtml
+    document.getElementById('curso-js').checked = aluno.cursoJs
 }
 
 function salvar() {
@@ -35,7 +41,11 @@ function salvar() {
         cursoJs: js
     }
 
-    alunos.push(aluno)
+    if(formEdicao) {
+        alunos[indice] = aluno
+    } else {
+        alunos.push(aluno)
+    }
 
     localStorage.setItem('alunos', JSON.stringify(alunos))
 }
