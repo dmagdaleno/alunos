@@ -11,7 +11,7 @@
 <body>
   <div id="id"></div>
   <div id="url"></div>
-  <div id="image"></div>
+  <div id="imagem"></div>
 </body>
 <script>
   function get(url, callback) {
@@ -35,7 +35,8 @@
   let url = 'https://api.thedogapi.com/v1/images/search?size=full'
   
   get(url, function(data) {
-    console.log('Chamada retornou: ' + data)
+    const imagem = data[0]
+    document.getElementById('id').innerHTML = imagem.id
   })
 </script>
 
