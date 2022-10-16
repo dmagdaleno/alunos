@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cachorros</title>
+</head>
+
+<body>
+  <div id="id"></div>
+  <div id="url"></div>
+  <div id="image"></div>
+</body>
+<script>
+  function get(url, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        console.log('responseText:' + xmlhttp.responseText);
+        try {
+          var data = JSON.parse(xmlhttp.responseText);
+        } catch (err) {
+          console.log(err.message + " in " + xmlhttp.responseText);
+          return;
+        }
+        callback(data);
+      }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+  }
+
+  let url = 'https://api.thedogapi.com/v1/images/search?size=full'
+  
+  get(url, function(data) {
+    console.log('Chamada retornou: ' + data)
+  })
+</script>
+
+</html>
