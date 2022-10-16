@@ -33,10 +33,14 @@
   }
 
   let url = 'https://api.thedogapi.com/v1/images/search?size=full'
-  
   get(url, function(data) {
     const imagem = data[0]
+
     document.getElementById('id').innerHTML = imagem.id
+    document.getElementById('url').innerHTML = imagem.url
+    
+    const img = '<img src="' + imagem.url + '" style="width: 300px;">'
+    document.getElementById('imagem').innerHTML = img
   })
 </script>
 
