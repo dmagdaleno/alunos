@@ -5,47 +5,129 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/bootstrap/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 10px;
+            padding-bottom: 20px;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+        .form-signin .form-control {
+            position: relative;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
     <title>Alunos</title>
 </head>
 
 <body>
-    <h1>Cadastro de Aluno</h1>
-    <form action="cadastro">
-        <fieldset>
-            <legend>Dados pessoais</legend>
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome">
-            <br>
-            <label for="email">E-mail</label>
-            <input type="text" id="email" name="email">
-            <br>
-            <label for="idade">Idade</label>
-            <input type="number" id="idade" name="idade">
-            <br>
-            <label for="sexo">Sexo</label>
-            <select name="sexo" id="sexo">
-                <option value="m">Masculino</option>
-                <option value="f">Feminino</option>
-                <option value="o">Outro</option>
-            </select>
-            <br>
-            <input type="file" id="foto" name="foto">
-        </fieldset>
-        <fieldset>
-            <legend>Cursos</legend>
-            <input type="checkbox" id="curso-logica" name="curso-logica">
-            <label for="curso-logica">Lógica de programação</label>
-            <br>
-            <input type="checkbox" id="curso-html" name="curso-html">
-            <label for="curso-html">HTML e CSS</label>
-            <br>
-            <input type="checkbox" id="curso-js" name="curso-js">
-            <label for="curso-js">JavaScript</label>
-            <br>
-        </fieldset>
-        <button type="button" id="btn-salvar" onclick="salvar()">Salvar</button>
-    </form>
-    <a href="./tabela.html">Alunos cadastrados</a>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Alunos</a>
+                </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="./index.html">Início</a></li>
+                    <li class="active"><a href="#">Cadastro</a></li>
+                    <li><a href="./tabela.html">Tabela</a></li>
+                </ul>
+            </div>
+          </div>
+        </nav>
+        <form class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          </form>
+        <div class="jumbotron">
+            <h1>Novo aluno</h1>
+            <form action="cadastro">
+                <fieldset>
+                    <legend>Dados pessoais</legend>
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome">
+                    <br>
+                    <label for="email">E-mail</label>
+                    <input type="text" id="email" name="email">
+                    <br>
+                    <label for="idade">Idade</label>
+                    <input type="number" id="idade" name="idade">
+                    <br>
+                    <label for="sexo">Sexo</label>
+                    <select name="sexo" id="sexo">
+                        <option value="m">Masculino</option>
+                        <option value="f">Feminino</option>
+                        <option value="o">Outro</option>
+                    </select>
+                    <br>
+                    <input type="file" id="foto" name="foto">
+                </fieldset>
+                <fieldset>
+                    <legend>Cursos</legend>
+                    <input type="checkbox" id="curso-logica" name="curso-logica">
+                    <label for="curso-logica">Lógica de programação</label>
+                    <br>
+                    <input type="checkbox" id="curso-html" name="curso-html">
+                    <label for="curso-html">HTML e CSS</label>
+                    <br>
+                    <input type="checkbox" id="curso-js" name="curso-js">
+                    <label for="curso-js">JavaScript</label>
+                    <br>
+                </fieldset>
+                <button type="button" id="btn-salvar" onclick="salvar()">Salvar</button>
+            </form>
+            <a href="./tabela.html">Alunos cadastrados</a>
+        </div>
+    </div>
+    <script src="./styles/bootstrap/js/bootstrap.min.js"></script>
 </body>
 <script src="./scripts/cadastro.js"></script>
 </html>
