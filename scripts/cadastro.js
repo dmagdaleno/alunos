@@ -29,6 +29,22 @@ function salvar() {
     let logica = document.getElementById('curso-logica').checked
     let html = document.getElementById('curso-html').checked
     let js = document.getElementById('curso-js').checked
+
+    if(nome === undefined || nome === null || nome === '') {
+        document.getElementById('erro-nome').classList.remove('fade')
+        setTimeout(() => {
+            document.getElementById('erro-nome').classList.add('fade')
+        }, 1500)
+        return
+    }
+
+    if(email === undefined || email === null || email === '') {
+        document.getElementById('erro-email').classList.remove('fade')
+        setTimeout(() => {
+            document.getElementById('erro-email').classList.add('fade')
+        }, 1500)
+        return
+    }
     
     let aluno = {
         nome: nome,
@@ -48,4 +64,26 @@ function salvar() {
     }
 
     localStorage.setItem('alunos', JSON.stringify(alunos))
+
+    document.getElementById('sucesso').classList.remove('fade')
+    setTimeout(() => {
+        document.getElementById('sucesso').classList.add('fade')
+    }, 1500)
+
+    limpaFormulario()
+}
+
+function limpaFormulario() {
+    document.getElementById('nome').value = ''
+    document.getElementById('email').value = ''
+    document.getElementById('idade').value = ''
+    document.getElementById('sexo').value = ''
+    document.getElementById('foto').value = ''
+    document.getElementById('curso-logica').checked = false
+    document.getElementById('curso-html').checked = false
+    document.getElementById('curso-js').checked = false
+}
+
+function someAlerta() {
+    document.getElementById('sucesso').classList.add('fade')
 }

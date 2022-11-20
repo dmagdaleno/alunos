@@ -35,10 +35,18 @@
         <form action="cadastro">
             <div class="form-group">
                 <legend>Dados pessoais</legend>
-                <label for="nome">Nome</label>
+                <label for="nome">Nome (*)</label>
                 <input class="form-control" placeholder="Nome do aluno" type="text" id="nome" name="nome"><br>
-                <label for="email">E-mail</label>
+                <div id="erro-nome" class="alert alert-danger fade show" role="alert">
+                    O campo nome é obrigatório!
+                </div>
+
+                <label for="email">E-mail *</label>
                 <input class="form-control" placeholder="e-mail do aluno" type="email" id="email" name="email"><br>
+                <div id="erro-email" class="alert alert-danger fade show" role="alert">
+                    O campo e-mail é obrigatório!
+                </div>
+
                 <label for="idade">Idade</label>
                 <input class="form-control" placeholder="Idade do aluno" type="number" id="idade" name="idade"><br>
                 <label for="sexo">Sexo</label>
@@ -60,9 +68,13 @@
             </div>
             <button class="btn btn-primary" type="button" id="btn-salvar" onclick="salvar()">Salvar</button>
         </form>   
+        <div id="sucesso" class="alert alert-success fade show" role="alert">
+            Aluno cadastrado com sucesso!
+        </div>
     </div>
 
 </body>
+
 <script src="./estilos/bootstrap/js/bootstrap.min.js"></script>
 <script src="./scripts/cadastro.js"></script>
 </html>
