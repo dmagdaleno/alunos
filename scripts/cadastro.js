@@ -1,3 +1,5 @@
+const url = 'http://ntcursoapi-env.eba-hvwnzgx7.us-east-1.elasticbeanstalk.com/nt-curso-api/alunos/'
+
 let alunos = JSON.parse(localStorage.getItem('alunos'))
 if(alunos == null) {
     alunos = []
@@ -63,7 +65,14 @@ function salvar() {
         alunos.push(aluno)
     }
 
-    localStorage.setItem('alunos', JSON.stringify(alunos))
+    fetch(url, { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(aluno)
+      })
+      .then(function(resposta) {
+          console.log('Salvo com sucesso', resposta)
+      })
 
     document.getElementById('sucesso').classList.remove('fade')
     setTimeout(() => {
