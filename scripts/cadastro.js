@@ -1,18 +1,19 @@
 const url = 'http://ntcursoapi-env.eba-hvwnzgx7.us-east-1.elasticbeanstalk.com/nt-curso-api/alunos/'
 
-let alunos = JSON.parse(localStorage.getItem('alunos'))
-if(alunos == null) {
-    alunos = []
-}
-
-const indice = location.search.split('=')[1]
-const formEdicao = indice !== undefined 
+const id = location.search.split('=')[1]
+const formEdicao = id !== undefined 
 if(formEdicao) {
-    preencheFormulario(indice)
+    fetch(url + id).then(function (resposta) {
+        console.log('Encontrado aluno com id ' + id)
+        return resposta.json()
+    })
+    .then(function (aluno) { 
+        preencheFormulario(aluno)
+    })
 }
 
-function preencheFormulario(indice) {
-    let aluno = alunos[indice]
+function preencheFormulario(aluno) {
+    console.log('Editando aluno ' + aluno.id)
     document.getElementById('nome').value = aluno.nome
     document.getElementById('email').value = aluno.email
     document.getElementById('idade').value = aluno.idade
@@ -59,14 +60,16 @@ function salvar() {
         cursoJs: js
     }
 
+    let metodo
     if(formEdicao) {
-        alunos[indice] = aluno
+        metodo = 'PUT'
+        aluno.id = id
     } else {
-        alunos.push(aluno)
+        metodo = 'POST'
     }
 
     fetch(url, { 
-        method: 'POST', 
+        method: metodo, 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(aluno)
       })
